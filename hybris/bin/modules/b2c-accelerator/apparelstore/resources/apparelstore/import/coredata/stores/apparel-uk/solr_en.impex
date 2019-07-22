@@ -36,6 +36,7 @@ UPDATE SolrSort ; indexedType(identifier)[unique=true] ; code[unique=true] ; nam
                 ; $solrIndexedType                     ; price-asc         ; "Price (lowest first)"  
                 ; $solrIndexedType                     ; price-desc        ; "Price (highest first)" 
                 ; $solrIndexedType                     ; relevance         ; "Relevance"             
-                ; $solrIndexedType                     ; topRated          ; "Top Rated"             
+                ; $solrIndexedType                     ; topRated          ; "Top Rated" 
+                #Localized those attributes....             
                 ; $solrIndexedType                     ; prior-asc         ; "Prior (lowest first)"  
                 ; $solrIndexedType                     ; prior-desc        ; "Prior (highest first)" 
