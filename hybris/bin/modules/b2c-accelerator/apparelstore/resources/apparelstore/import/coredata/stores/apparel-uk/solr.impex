@@ -146,7 +146,7 @@ INSERT_UPDATE SolrSort ; &sortRefID ; indexedType(identifier)[unique=true] ; cod
                        ; sortRef4   ; $solrIndexedType                     ; name-desc         ; false    
                        ; sortRef5   ; $solrIndexedType                     ; price-asc         ; false    
                        ; sortRef6   ; $solrIndexedType                     ; price-desc        ; false 
-                       #Added sort types for the sorting   
+                       #Added sort types for the sorting..............................................   
                        ; sortRef7   ; $solrIndexedType                     ; prior-asc         ; false    
                        ; sortRef8   ; $solrIndexedType                     ; prior-desc        ; false    
                        
@@ -160,7 +160,7 @@ INSERT_UPDATE SolrSortField ; sort(indexedType(identifier),code)[unique=true] ; 
                             ; $solrIndexedType:name-desc                      ; name                   ; false                  
                             ; $solrIndexedType:price-asc                      ; priceValue             ; true                   
                             ; $solrIndexedType:price-desc                     ; priceValue             ; false 
-                            #added sort type with the sorting field                 
+                            #added sort type with the sorting field...........................................                 
                             ; $solrIndexedType:prior-asc                      ; prior                  ; true                   
                             ; $solrIndexedType:prior-desc                     ; prior                  ; false                  
                             
