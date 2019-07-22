@@ -6,6 +6,7 @@
 
 	<bean class="de.hybris.platform.commercefacades.product.data.ProductData">
 		<property name="genders" type="java.util.List&lt;com.solrsession.facades.product.data.GenderData>"/>
+		<property name="prior" type="java.lang.Integer"/>
 	</bean>
 
 	<bean class="com.solrsession.facades.product.data.GenderData">
