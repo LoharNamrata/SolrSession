@@ -152,6 +152,12 @@
 	       parent="abstractPropertyFieldValueProvider">
 		<property name="fieldNameProvider" ref="solrFieldNameProvider"/>
 	</bean>
+	
+	<bean id="solrSessionPriorListValueProvider"
+	      class="com.solrsession.core.search.solrfacetsearch.provider.impl.SolrSessionPriorListValueProvider"
+	       parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider"/>
+	</bean>
 
 	<bean id="colorFacetDisplayNameProvider"
 	      class="com.solrsession.core.search.solrfacetsearch.provider.impl.ColorFacetDisplayNameProvider"

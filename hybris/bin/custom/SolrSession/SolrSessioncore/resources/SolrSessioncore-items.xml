@@ -8,6 +8,7 @@
         <collectiontype code="GenderList" elementtype="Gender" autocreate="true" generate="true" type="list"/>
         <collectiontype code="SwatchColorSet" elementtype="SwatchColorEnum" autocreate="true" generate="true"
                         type="set"/>
+        <collectiontype code="PriorList" elementtype="java.lang.Integer" autocreate="true" generate="true" type="list"/>
     </collectiontypes>
 
     <enumtypes>
@@ -45,6 +46,10 @@
                         <persistence type="property"/>
                     </attribute>
                     <attribute qualifier="prior" type="java.lang.Integer">
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="priorList" type="PriorList">
                         <modifiers/>
                         <persistence type="property"/>
                     </attribute>
