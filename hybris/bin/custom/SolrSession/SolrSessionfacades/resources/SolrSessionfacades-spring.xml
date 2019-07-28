@@ -182,4 +182,24 @@
 	</bean>
 
 	<bean id="genderData" class="com.solrsession.facades.product.data.GenderData" scope="prototype"/>
+	
+	
+	<!-- Populator & Converter entry for the default filter query selection on category page -->
+    <alias name="defaultSolrSessionSearchQueryPageableConverter" alias="commerceSearchQueryPageableConverter" />
+	<bean id="defaultSolrSessionSearchQueryPageableConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="de.hybris.platform.commerceservices.search.solrfacetsearch.data.SolrSearchRequest" />
+		<property name="populators">
+			<list>
+				<ref bean="commerceSearchSolrQueryPopulator" />
+				<ref bean="commerceSearchPagePopulator" />
+				<ref bean="commerceSearchSortPopulator" />
+				<ref bean="commerceSearchTextPopulator" />
+				<ref bean="solrSessionSearchFiltersPopulator" />
+			</list>
+		</property>
+	</bean>
+    
+    <alias name="defaultSolrSessionSearchFiltersPopulator" alias="solrSessionSearchFiltersPopulator"/>
+    <bean id="defaultSolrSessionSearchFiltersPopulator" class="com.solrsession.facades.populators.SolrSessionSearchFiltersPopulator"/>
+    
 </beans>
