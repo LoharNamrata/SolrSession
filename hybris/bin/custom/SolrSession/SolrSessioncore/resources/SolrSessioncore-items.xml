@@ -26,13 +26,105 @@
             <value code="WHITE"/>
             <value code="YELLOW"/>
         </enumtype>
+        
+        <enumtype generate="true" code="RewardStatusLevel" autocreate="true" dynamic="true">
+            <value code="SILVER"/>
+            <value code="BLUE"/>
+            <value code="GOLD"/>
+        </enumtype>
     </enumtypes>
+    
+    <relations>
+    	<relation code="Rental2ProductRel" localized="false" generate="true" autocreate="true">
+	        <sourceElement type="Rental" qualifier="rentalPro" cardinality="one">
+	            <modifiers read="true" write="true" search="true" optional="false"/>
+	        </sourceElement>
+	        <targetElement type="Product" qualifier="proRental" cardinality="many">
+	            <modifiers read="true" write="true" search="true" optional="true" partof="true"/>
+	        </targetElement>
+	    </relation>
+	    
+	    <relation code="Rental2CustomerRel" localized="false" generate="true" autocreate="true">
+	        <sourceElement type="Customer" qualifier="rentalCustomer" cardinality="one">
+	            <modifiers read="true" write="true" search="true" optional="false"/>
+	        </sourceElement>
+	        <targetElement type="Rental" qualifier="rentalCust" cardinality="many">
+	            <modifiers read="true" write="true" search="true" optional="true" partof="true"/>
+	        </targetElement>
+	    </relation>
+    </relations>
 
     <itemtypes>
 
         <!-- Add your item definitions here -->
 
         <!-- TypeGroups are for structure of this file only -->
+         <typegroup name="Book">
+	         <itemtype code="BookProduct" extends="Product"
+	                      autocreate="true" generate="true"
+	                      jaloclass="com.solrsession.core.jalo.BookProduct">
+	                <description>Base apparel product extension that contains additional attributes.</description>
+	                <attributes>
+	                    <attribute qualifier="edition" type="java.lang.String">
+	                        <description>List of genders that the ApparelProduct is designed for</description>
+	                        <modifiers/>
+	                        <persistence type="property"/>
+	                    </attribute>
+	                    <attribute qualifier="publication" type="java.lang.Integer">
+	                        <modifiers/>
+	                        <persistence type="property"/>
+	                    </attribute>	            
+	                </attributes>
+	       </itemtype>
+	       
+	       <itemtype code="Rental" extends="GenericItem"
+                      autocreate="true" generate="true"
+                      jaloclass="com.solrsession.core.jalo.Rental">
+                <description>Base apparel product extension that contains additional attributes.</description>
+                <deployment table="Rental" typecode="10001"/>
+                <attributes>
+                    <attribute qualifier="rentalID" type="java.lang.Integer">
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="startDate" type="java.util.Date">
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="endDate" type="java.util.Date">
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            
+            <itemtype code="RewardStatusLevelConfig" extends="GenericItem"
+                      autocreate="true" generate="true"
+                      jaloclass="com.solrsession.core.jalo.RewardStatusLevelConfig">
+                <description>Base apparel product extension that contains additional attributes.</description>
+                <deployment table="RewardStatusLevelConfig" typecode="10002"/>
+                <attributes>
+                    <attribute qualifier="configID" type="java.lang.String">
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="threshold" type="java.lang.Integer">
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="image" type="Media">
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="rewardStatusLevel" type="RewardStatusLevel">
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            
+         </typegroup>
+        
 
         <typegroup name="Apparel">
             <itemtype code="ApparelProduct" extends="Product"
