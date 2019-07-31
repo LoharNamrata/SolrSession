@@ -1,0 +1,48 @@
+ 
+$classificationCatalog=nascoClassification
+$classificationCatalogName=Nasco Classification Catalog
+$languages=en,en_US
+$lang=en
+$lang_en_US=en_US
+ 
+$classCatalogVersion=catalogversion(catalog(id[default='nascoClassification']),version[default='1.0'])[unique=true,default='nascoClassification:1.0']
+$classSystemVersion=systemVersion(catalog(id[default='nascoClassification']),version[default='1.0'])[unique=true]
+$class=classificationClass(ClassificationClass.code,$classCatalogVersion)[unique=true]
+$supercategories=source(code, $classCatalogVersion)[unique=true]
+$categories=target(code, $catalogVersion)[unique=true]
+$attribute=classificationAttribute(code,$classSystemVersion)[unique=true]
+$unit=unit(code,$classSystemVersion)
+ 
+ 
+ 
+ 
+# Powertools Classification catalog
+INSERT_UPDATE ClassificationSystem ; id[unique=true]        ; name[lang=$lang]           ; name[lang=$lang_en_US]     
+                                   ; $classificationCatalog ; $classificationCatalogName ; $classificationCatalogName 
+                                   
+# Insert Classifications System Version
+INSERT_UPDATE ClassificationSystemVersion ; catalog(id)[unique=true] ; version[unique=true] ; active ; inclPacking[virtual=true,default=true] ; inclDuty[virtual=true,default=true] ; inclFreight[virtual=true,default=true] ; inclAssurance[virtual=true,default=true] 
+                                          ; $classificationCatalog   ; 1.0                  ; true   
+                                          
+# Insert Classifications                  
+INSERT_UPDATE ClassificationClass ; $classCatalogVersion ; code[unique=true]  ; allowedPrincipals(uid)[default='customergroup'] 
+                                  ;                      ; Performance-weight ;                                                 ;  ;  ;  ;  ;  
+                                  
+# Insert Classification Attributes
+INSERT_UPDATE ClassificationAttribute ; $classSystemVersion ; code[unique=true]  ; name[lang=$lang]   
+                                      ;                     ; usGrade            ; US Grade           
+                                      ;                     ; itemWeight         ; Item Weight        
+                                      ;                     ; Color              ; Color              
+                                      ;                     ; groupColor         ; Group Color        
+                                      ;                     ; Warehouse Location ; Warehouse Location 
+                                      
+INSERT_UPDATE ClassAttributeAssignment ; $class             ; $attribute         ; position ; $unit ; attributeType(code[default=string]) ; multiValued[default=false] ; range[default=false] ; localized[default=true] 
+                                       ; Performance-weight ; usGrade            ; 1        ;       ;                                     ;                            ;                      ;                         
+                                       ; Performance-weight ; itemWeight         ; 2        ;       ;                                     ;                            ;                      ;                         
+                                       ; Performance-weight ; Color              ; 3        ;       ;                                     ;                            ;                      ;                         
+                                       ; Performance-weight ; groupColor         ; 4        ;       ;                                     ;                            ;                      ;                         
+                                       ; Performance-weight ; Warehouse Location ; 5        ;       ;                                     ;                            ;                      ;                         
+                                       
+# Links ClassificationClasses to Categories
+INSERT_UPDATE CategoryCategoryRelation ; $categories  ; $supercategories   
+                                       ; wood-crafts1 ; Performance-weight 

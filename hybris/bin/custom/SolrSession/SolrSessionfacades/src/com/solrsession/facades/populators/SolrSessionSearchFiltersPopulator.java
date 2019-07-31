@@ -7,9 +7,10 @@ import de.hybris.platform.commerceservices.search.solrfacetsearch.data.SearchQue
 import de.hybris.platform.commerceservices.search.solrfacetsearch.data.SolrSearchQueryData;
 import de.hybris.platform.commerceservices.search.solrfacetsearch.data.SolrSearchRequest;
 import de.hybris.platform.commerceservices.search.solrfacetsearch.populators.SearchFiltersPopulator;
-import de.hybris.platform.solrfacetsearch.config.IndexedProperty;
 import de.hybris.platform.solrfacetsearch.config.IndexedType;
 import de.hybris.platform.solrfacetsearch.search.SearchQuery;
+
+import groovy.transform.IndexedProperty;
 
 
 /**
@@ -28,7 +29,7 @@ public class SolrSessionSearchFiltersPopulator<FACET_SEARCH_CONFIG_TYPE, INDEXED
 		if (target.getSearchQueryData().getCategoryCode() != null)
 		{
 			// allCategories field indexes all the separate category hierarchies
-			target.getSearchQuery().addFilterQuery("prior", "5");
+			//target.getSearchQuery().addFilterQuery("prior", "5");
 		}
 	}
 
