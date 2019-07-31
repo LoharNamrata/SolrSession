@@ -12,8 +12,8 @@
                 		
         
         <requires-extension name="acceleratorfacades"/>
-                		
-        
+        <requires-extension name="solrfacetsearch"/>        		
+        <requires-extension name="commercefacades"/>
         <requires-extension name="SolrSessioncore"/>
                 		
         

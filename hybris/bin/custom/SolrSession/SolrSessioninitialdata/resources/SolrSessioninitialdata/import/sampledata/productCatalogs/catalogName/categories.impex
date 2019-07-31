@@ -1,18 +1,40 @@
+ 
 # -----------------------------------------------------------------------
 # Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 # -----------------------------------------------------------------------
 # ImpEx for Importing Categories
-
+ 
 # Macros / Replacement Parameter definitions
-$productCatalog=__PRODUCT_CATALOG_NAME__
-$productCatalogName=__PRODUCT_CATALOG_FULL_NAME__
-
+$productCatalog=apparelProductCatalog
+$productCatalogName=Apparel Product Catalog
+ 
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 $supercategories=source(code, $catalogVersion)[unique=true]
 $categories=target(code, $catalogVersion)[unique=true]
-
+ 
 # Insert Categories
-INSERT_UPDATE Category;code[unique=true];allowedPrincipals(uid)[default='customergroup'];$catalogVersion
-
+INSERT_UPDATE Category ; code[unique=true] ; allowedPrincipals(uid)[default='customergroup'] ; $catalogVersion  
+                       ; categories        ;                                                 ;                   
+                       ; fiction           ;                                                 ;                   
+                       ; mystry            ;                                                 ;                   
+                       ; drama             ;                                                 ;                   
+                       ; fantasy           ;                                                 ;                   
+                       ; comedy            ;                                                 ;                   
+                       ; non-fiction       ;                                                 ;                   
+                       ; dictionary        ;                                                 ;                   
+                       ; history           ;                                                 ;                   
+                       ; philosophy        ;                                                 ;                   
+                       ; encyclopedia      ;                                                 ;                   
+                       
+                       
 # Insert Category Structure
-INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories
+INSERT_UPDATE CategoryCategoryRelation ; $categories  ; $supercategories 
+                                       ; fiction      ; categories       
+                                       ; non-fiction  ; categories       
+                                       ; mystry       ; fiction          
+                                       ; drama        ; fiction          
+                                       ; comedy       ; fiction          
+                                       ; dictionary   ; non-fiction      
+                                       ; history      ; non-fiction      
+                                       ; philosophy   ; non-fiction      
+                                       ; encyclopedia ; non-fiction      
