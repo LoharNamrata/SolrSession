@@ -194,6 +194,7 @@
 				<ref bean="commerceSearchPagePopulator" />
 				<ref bean="commerceSearchSortPopulator" />
 				<ref bean="commerceSearchTextPopulator" />
+				<ref bean="commerceSearchFiltersPopulator" />
 				<ref bean="solrSessionSearchFiltersPopulator" />
 			</list>
 		</property>
