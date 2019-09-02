@@ -1,0 +1,11 @@
+Solr 
+********************************************************************************************************************************
+  T1: Created attribute of name "PRIOR" and also populated the same.
+	T1_1 -> Index the attribute in apparel product catalog
+	T1_2 -> Localized the attributes for the frontend sorting display
+	T1_3 -> Added solr sort attribute and functioned it to get front end product sort (Sorting)
+	T1_4 -> Customize the attribute to make to autosuggestable along with the product results (Autosuggestion)
+	T1_5 -> Added facet on frontend with a value provider (Facets)
+	T1_6 -> Added default filter query(fq) attribute for the PLP products (fq) 
+	T1_7 -> Result top most product on frontend first and then rest (Hero_products)
+	
